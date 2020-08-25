@@ -16,8 +16,13 @@ public class testmanejopersonas {
         personaDAO.insertar(personanueva);
 
 
+
+        Persona personamodificar =new Persona(3,"arturo","venavidez","enamnue@correo","12349884");
+        personaDAO.updatePersona(personamodificar);
+
         List<Persona> personas=personaDAO.seleccionar();
         for (Persona persona:personas) System.out.println(persona);
+
 
     }
 
