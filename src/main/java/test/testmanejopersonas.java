@@ -20,6 +20,7 @@ public class testmanejopersonas {
         Persona personamodificar =new Persona(3,"arturo","venavidez","enamnue@correo","12349884");
         personaDAO.updatePersona(personamodificar);
 
+        personaDAO.deletePersona(personamodificar);
         List<Persona> personas=personaDAO.seleccionar();
         for (Persona persona:personas) System.out.println(persona);
 

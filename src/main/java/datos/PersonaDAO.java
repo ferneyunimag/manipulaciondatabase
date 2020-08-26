@@ -13,10 +13,14 @@ import java.util.List;
 
 public class PersonaDAO {
 
-    private static final
-    String SQLSELECT = "SELECT id_persona,nombre,apellido,email,telefono FROM persona";
+    private static final String SQLSELECT = "SELECT id_perrsona,nombre,apellido,email,telefono FROM persona";
     private static final String SQLINSERT="INSERT INTO persona(nombre,apellido,email,telefono) VALUES(?,?,?,?)";
     private static final String SQLUPDATE="UPDATE persona SET nombre=?,apellido=?,email=?,telefono=? WHERE id_persona=?";
+    private static final String SQLDELETE="DELETE FROM persona WHERE id_persona=?";
+
+
+
+
     public List<Persona> seleccionar() {
 
         Connection conn = null;
@@ -115,6 +119,33 @@ public class PersonaDAO {
 
         return registro;
     }
+
+
+
+
+    public  int  deletePersona(Persona persona){
+
+        int registro=0;
+        Connection conn = null;
+        PreparedStatement stmt=null;
+
+        try {
+            conn= getConnection();
+            stmt=conn.prepareStatement(SQLDELETE);
+            stmt.setInt(5,persona.getIdPersona());
+            registro=stmt.executeUpdate();
+
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace(System.out);
+        }
+
+
+        return registro;
+    }
+
+
 
 
 
